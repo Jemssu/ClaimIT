@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item | ClaimIT</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .navbar-app-logo{width:38px;height:38px;object-fit:contain;}
+        .navbar-title-sub{color:#003d7a;font-weight:700;}
+        .logout-btn{background:none;border:none;color:#d9242e;font-size:20px;cursor:pointer;padding:6px;border-radius:6px;}
+        .logout-btn:hover{background:#f8d7da;}
+        .admin_name{color:#333;font-weight:600;font-size:14px;margin-right:8px;}
+        .navbar-profile{display:flex;align-items:center;}
+
+        .add-item-form { max-width: 860px; margin: 0 auto; }
+
+        .form-section {
+            background: white; padding: 28px 30px;
+            border-radius: 12px; box-shadow: 0 2px 8px rgba(0,61,122,0.08);
+            margin-bottom: 24px;
+        }
+        .form-section h3 {
+            color: #003d7a; margin-bottom: 22px; font-size: 17px; font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+            border-bottom: 2px solid #f0f5ff; padding-bottom: 14px;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label {
+            color: #003d7a; font-weight: 700; margin-bottom: 7px; font-size: 13px;
+        }
+        .form-group label .req { color: #d9242e; }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 11px 13px; border: 2px solid #e0e0e0; border-radius: 8px;
+            font-size: 14px; font-family: inherit; transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none; border-color: #d9242e; box-shadow: 0 0 0 3px rgba(217,36,46,0.1);
+        }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+
+        /* Image section */
+        .image-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+        .capture-option {
+            border: 2px dashed #d0dff5; border-radius: 12px; padding: 20px;
+            text-align: center; background: #f8faff;
+        }
+        .capture-option h4 { color: #003d7a; margin-bottom:10px; font-size:15px; }
+        .capture-option p  { color: #888; font-size:12px; margin-bottom:12px; }
+        .capture-btn {
+            display: block; width: 100%;
+            padding: 10px; margin-bottom: 8px;
+            background: linear-gradient(135deg, #d9242e, #c41e26);
+            color: white; border: none; border-radius: 8px;
+            font-size: 13px; font-weight: 700; cursor: pointer;
+            font-family: inherit; transition: opacity 0.2s;
+        }
+        .capture-btn:hover { opacity: 0.88; }
+        .capture-btn.secondary { background: #003d7a; }
+        .capture-btn.stop      { background: #6c757d; }
+        .capture-btn:disabled  { background: #ccc; cursor: not-allowed; }
+
+        #cameraVideo, #imagePreview, #cameraPreview {
+            width: 100%; max-height: 220px; border-radius: 8px;
+            object-fit: cover; display: none; margin-bottom: 10px;
+        }
+        #imagePreview, #cameraPreview { object-fit: contain; background: #f0f5ff; }
+
+        /* Preview strip */
+        .img-preview-strip {
+            width: 100%; height: 180px;
+            border: 2px dashed #d0dff5; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            background: #f8faff; overflow: hidden; margin-bottom: 16px;
+        }
+        .img-preview-strip img { width:100%; height:100%; object-fit:contain; }
+        .img-preview-strip span { color:#aaa; font-size:13px; font-weight:600; }
+
+        /* Form actions */
+        .form-actions {
+            display: flex; gap: 14px; justify-content: flex-end; margin-top: 6px;
+        }
+        .btn-submit {
+            padding: 13px 32px; background: linear-gradient(135deg,#d9242e,#c41e26);
+            color:white; border:none; border-radius:8px; font-size:14px;
+            font-weight:700; cursor:pointer; font-family:inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-submit:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(217,36,46,0.3); }
+        .btn-cancel-link {
+            padding: 13px 24px; background:#6c757d; color:white; border:none;
+            border-radius:8px; font-size:14px; font-weight:700; cursor:pointer;
+            font-family:inherit; text-decoration:none; display:inline-flex;
+            align-items:center;
+        }
+        .btn-cancel-link:hover { background:#5a6268; }
+
+        .alert {
+            padding:14px 18px; border-radius:8px; margin-bottom:20px;
+            border-left:4px solid; animation:slideDown 0.3s ease;
+            display:flex; align-items:center; gap:10px; font-weight:600; font-size:14px;
+        }
+        .alert-success { background:#d4edda; color:#155724; border-color:#28a745; }
+        .alert-error   { background:#f8d7da; color:#721c24; border-color:#d9242e; }
+        @keyframes slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+
+        @media(max-width:768px) {
+            .form-grid, .image-grid { grid-template-columns:1fr; }
+            .form-actions { flex-direction:column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sidebarMount"></div>
+    <div id="navbarMount"></div>
+
+    <section class="home-section">
+        <div class="home-content">
+            <h2 id="pageTitle" style="color:#003d7a;margin-bottom:24px;font-size:22px;">Add New Found Item</h2>
+
+            <div id="alertArea"></div>
+
+            <div class="add-item-form">
+
+                <!-- Item Details -->
+                <div class="form-section">
+                    <h3><i class='bx bx-package'></i> Item Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Item Name <span class="req">*</span></label>
+                            <input type="text" id="item_name" placeholder="e.g., iPhone 13 Pro">
+                        </div>
+                        <div class="form-group">
+                            <label>Category <span class="req">*</span></label>
+                            <select id="category">
+                                <option value="">-- Select Category --</option>
+                                <option>Electronics</option><option>Clothing</option>
+                                <option>Accessories</option><option>Books</option>
+                                <option>IDs/Cards</option><option>Bags</option>
+                                <option>School Supplies</option><option>Sports Equipment</option>
+                                <option>Personal Items</option><option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label>Location Found <span class="req">*</span></label>
+                            <input type="text" id="found_location" placeholder="e.g., Library 2nd Floor, near study tables">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="form-section">
+                    <h3><i class='bx bx-info-circle'></i> Item Description</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Brand</label>
+                            <input type="text" id="brand" placeholder="e.g., Apple, Samsung, Nike">
+                        </div>
+                        <div class="form-group">
+                            <label>Color</label>
+                            <input type="text" id="color" placeholder="e.g., Black, Silver">
+                        </div>
+                        <div class="form-group">
+                            <label>Amount / Quantity</label>
+                            <input type="text" id="amount" placeholder="e.g., 1 piece, 2 units">
+                        </div>
+                        <div class="form-group">
+                            <label>Other Notes</label>
+                            <input type="text" id="notes" placeholder="Condition, markings, etc.">
+                        </div>
+                        <div class="form-group full">
+                            <label>Full Description</label>
+                            <textarea id="description" placeholder="Any additional details…"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo -->
+                <div class="form-section">
+                    <h3><i class='bx bx-camera'></i> Item Photo</h3>
+
+                    <div class="img-preview-strip" id="previewStrip">
+                        <span>No photo selected yet</span>
+                    </div>
+
+                    <div class="image-grid">
+                        <!-- Camera -->
+                        <div class="capture-option">
+                            <h4>📷 Webcam / Camera</h4>
+                            <p>Capture using your device camera</p>
+                            <video id="cameraVideo" playsinline autoplay muted></video>
+                            <canvas id="canvas" style="display:none;"></canvas>
+                            <img id="cameraPreview" alt="Captured">
+                            <button type="button" class="capture-btn" id="startCameraBtn">▶ Start Camera</button>
+                            <button type="button" class="capture-btn secondary" id="capturePhotoBtn" style="display:none;">📸 Capture Photo</button>
+                            <button type="button" class="capture-btn stop"      id="stopCameraBtn"   style="display:none;">■ Stop Camera</button>
+                        </div>
+                        <!-- File Upload -->
+                        <div class="capture-option">
+                            <h4>📁 Upload File</h4>
+                            <p>Choose an image from your device</p>
+                            <img id="imagePreview" alt="Preview">
+                            <button type="button" class="capture-btn" onclick="document.getElementById('fileInput').click()">
+                                <i class='bx bx-upload'></i> Choose File
+                            </button>
+                            <input type="file" id="fileInput" accept="image/*" style="display:none;">
+                            <p style="font-size:11px;color:#aaa;margin-top:8px;">JPG, PNG, GIF, WebP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions">
+                    <a href="admin.html" class="btn-cancel-link"><i class='bx bx-arrow-back'></i> Cancel</a>
+                    <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">
+                        <i class='bx bx-plus-circle'></i> Add Item
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="admin-state.js"></script>
+    <script>
+    requireAuth();
+
+    let capturedDataUrl = null; // from webcam
+    let uploadedDataUrl = null; // from file input
+    let editItemId      = null;
+
+    async function init() {
+        await loadState();
+        document.getElementById('sidebarMount').outerHTML = renderSidebar('add_item.html');
+        document.getElementById('navbarMount').outerHTML  = renderNavbar('add_item.html');
+
+        // Check edit mode
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('edit')) {
+            editItemId = parseInt(params.get('edit'));
+            loadEditData(editItemId);
+        }
+    }
+
+    function loadEditData(id) {
+        const item = getItems().find(i => i.item_id == id);
+        if (!item) return;
+        document.getElementById('pageTitle').textContent = 'Edit Item';
+        document.getElementById('submitBtn').innerHTML   = '<i class="bx bx-save"></i> Save Changes';
+        document.getElementById('item_name').value     = item.item_name;
+        document.getElementById('category').value      = item.category;
+        document.getElementById('found_location').value= item.found_location;
+        document.getElementById('description').value   = item.description;
+        // Show existing image
+        setPreview(item.image || 'assets/default/DEF.png');
+    }
+
+    /* ── SUBMIT ───────────────────────────── */
+    function submitForm() {
+        const name     = document.getElementById('item_name').value.trim();
+        const category = document.getElementById('category').value;
+        const location = document.getElementById('found_location').value.trim();
+
+        if (!name)     { showAlert('Item Name is required.', 'error'); return; }
+        if (!category) { showAlert('Please select a Category.', 'error'); return; }
+        if (!location) { showAlert('Location Found is required.', 'error'); return; }
+
+        const imgData = capturedDataUrl || uploadedDataUrl || null;
+
+        if (editItemId) {
+            // EDIT MODE
+            const changes = {
+                item_name:      name,
+                category:       category,
+                found_location: location,
+                description:    buildDesc(),
+            };
+            if (imgData) changes.image = imgData;
+            updateItem(editItemId, changes);
+            showAlert(`✓ Item <strong>${name}</strong> updated successfully! Product Code: <strong>${getItems().find(i=>i.item_id==editItemId)?.product_code}</strong>`, 'success');
+            setTimeout(() => window.location.href = 'admin.html', 2200);
+        } else {
+            // ADD MODE
+            const newItem = addItem({
+                item_name:      name,
+                category:       category,
+                found_location: location,
+                brand:          document.getElementById('brand').value.trim(),
+                color:          document.getElementById('color').value.trim(),
+                amount:         document.getElementById('amount').value.trim(),
+                description:    document.getElementById('description').value.trim(),
+                previewImage:   imgData
+            });
+            showAlert(`✓ Item <strong>${name}</strong> added! Product Code: <strong>${newItem.product_code}</strong>`, 'success');
+            resetForm();
+        }
+    }
+
+    function buildDesc() {
+        const parts = [];
+        const b = document.getElementById('brand').value.trim();
+        const c = document.getElementById('color').value.trim();
+        const a = document.getElementById('amount').value.trim();
+        const d = document.getElementById('description').value.trim();
+        if (b) parts.push(`Brand: ${b}`);
+        if (c) parts.push(`Color: ${c}`);
+        if (a) parts.push(`Amount: ${a}`);
+        if (d) parts.push(d);
+        return parts.join(' | ') || 'No description provided.';
+    }
+
+    function resetForm() {
+        ['item_name','brand','color','amount','notes','description'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+        document.getElementById('category').value = '';
+        document.getElementById('found_location').value = '';
+        capturedDataUrl = null;
+        uploadedDataUrl = null;
+        document.getElementById('fileInput').value = '';
+        document.getElementById('imagePreview').style.display  = 'none';
+        document.getElementById('cameraPreview').style.display = 'none';
+        setPreview(null);
+    }
+
+    /* ── ALERT ────────────────────────────── */
+    function showAlert(msg, type) {
+        const area = document.getElementById('alertArea');
+        area.innerHTML = `
+            <div class="alert alert-${type}">
+                <i class='bx ${type==='success'?'bx-check-circle':'bx-x-circle'}'></i>
+                <span>${msg}</span>
+            </div>`;
+        area.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (type === 'success') {
+            setTimeout(() => area.innerHTML = '', 5000);
+        }
+    }
+
+    /* ── IMAGE PREVIEW ────────────────────── */
+    function setPreview(src) {
+        const strip = document.getElementById('previewStrip');
+        if (!src) {
+            strip.innerHTML = '<span>No photo selected yet</span>';
+        } else {
+            strip.innerHTML = `<img src="${src}" onerror="this.src='assets/default/DEF.png'">`;
+        }
+    }
+
+    // File upload
+    document.getElementById('fileInput').addEventListener('change', e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            uploadedDataUrl = ev.target.result;
+            capturedDataUrl = null;
+            const prev = document.getElementById('imagePreview');
+            prev.src = ev.target.result;
+            prev.style.display = 'block';
+            setPreview(ev.target.result);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Webcam
+    let cameraStream = null;
+    document.getElementById('startCameraBtn').addEventListener('click', async () => {
+        try {
+            cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode:'environment' } });
+            const vid = document.getElementById('cameraVideo');
+            vid.srcObject = cameraStream;
+            vid.play();
+            vid.style.display = 'block';
+            document.getElementById('startCameraBtn').style.display  = 'none';
+            document.getElementById('capturePhotoBtn').style.display = 'block';
+            document.getElementById('stopCameraBtn').style.display   = 'block';
+        } catch(err) {
+            showAlert('Camera error: ' + err.message, 'error');
+        }
+    });
+
+    document.getElementById('capturePhotoBtn').addEventListener('click', () => {
+        const vid    = document.getElementById('cameraVideo');
+        const canvas = document.getElementById('canvas');
+        canvas.width  = vid.videoWidth;
+        canvas.height = vid.videoHeight;
+        canvas.getContext('2d').drawImage(vid, 0, 0);
+        capturedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+        uploadedDataUrl = null;
+        const prev = document.getElementById('cameraPreview');
+        prev.src = capturedDataUrl;
+        prev.style.display = 'block';
+        setPreview(capturedDataUrl);
+    });
+
+    document.getElementById('stopCameraBtn').addEventListener('click', () => {
+        if (cameraStream) cameraStream.getTracks().forEach(t => t.stop());
+        document.getElementById('cameraVideo').style.display     = 'none';
+        document.getElementById('startCameraBtn').style.display  = 'block';
+        document.getElementById('capturePhotoBtn').style.display = 'none';
+        document.getElementById('stopCameraBtn').style.display   = 'none';
+    });
+
+    init();
+    </script>
+</body>
+</html>

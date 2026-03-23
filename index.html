@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found Items Catalog | ClaimIT</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CLAIMIT - INDEX / CATALOG PAGE
+           Red (#d9242e) & Blue (#003d7a) Theme
+           Montserrat font — matching admin-style exactly
+           ============================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 61, 122, 0.1);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-logo {
+            width: 55px;
+            height: auto;
+        }
+
+        .navbar-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #d9242e;
+            letter-spacing: 1px;
+        }
+
+        .navbar-app-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .navbar-title-sub {
+            color: #003d7a;
+            font-weight: 700;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .item-count {
+            background: #f0f5ff;
+            color: #003d7a;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #d0dff5;
+        }
+
+        .admin-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #003d7a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 18px;
+            border: 2px solid #003d7a;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .admin-link:hover {
+            background: #003d7a;
+            color: white;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #d9242e 0%, #c41e26 60%, #a51920 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 30px 60px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 300px; height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -40px;
+            width: 250px; height: 250px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .hero-tagline {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+        }
+
+        /* ===== FILTER SECTION ===== */
+        .filter-section {
+            padding: 30px 20px;
+            background: #f8f9fa;
+        }
+
+        .filter-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px 30px;
+            box-shadow: 0 2px 8px rgba(0, 61, 122, 0.08);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-card h3 {
+            color: #003d7a;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #d9242e;
+            box-shadow: 0 0 0 3px rgba(217, 36, 46, 0.1);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            color: #003d7a;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .filter-group select,
+        .filter-group input[type="date"] {
+            padding: 11px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .filter-group select:focus,
+        .filter-group input[type="date"]:focus {
+            outline: none;
+            border-color: #d9242e;
+            box-shadow: 0 0 0 3px rgba(217, 36, 46, 0.1);
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #d9242e 0%, #c41e26 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 36, 46, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        /* ===== CATALOG SECTION ===== */
+        .catalog-section {
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+
+        /* Results bar */
+        .results-bar {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .results-count {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .results-count strong {
+            color: #003d7a;
+        }
+
+        /* ===== ITEMS GRID ===== */
+        .items-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        /* ── MODAL ── */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            animation: fadeIn 0.2s ease;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal.open {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            width: 100%;
+            max-width: 780px;
+            max-height: 90vh;
+            overflow: hidden;
+            animation: slideIn 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid #d9242e;
+        }
+        .modal-content.claimed-modal {
+            border-top-color: #28a745;
+            box-shadow: 0 20px 60px rgba(40,167,69,0.15);
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-30px) scale(0.98); opacity: 0; }
+            to   { transform: translateY(0)     scale(1);    opacity: 1; }
+        }
+
+        /* Modal header */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 24px 16px;
+            border-bottom: 1px solid #eee;
+            background: #f8f9fa;
+            flex-shrink: 0;
+        }
+        .modal-header.claimed-header { background: #f0fdf4; border-bottom-color: #bbf7d0; }
+
+        .modal-header-left { display: flex; flex-direction: column; gap: 6px; }
+
+        .modal-header h2 {
+            color: #003d7a;
+            font-size: 19px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .modal-header.claimed-header h2 { color: #1a7f37; }
+
+        .modal-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .modal-product-code {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .modal-product-code.unclaimed { color: #d9242e; background: #fff0f0; border: 1px solid #ffd0d2; }
+        .modal-product-code.claimed   { color: #1a7f37; background: #dcfce7; border: 1px solid #bbf7d0; }
+
+        .modal-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+        .modal-status-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .modal-status-badge.unclaimed { background: #fff0f0; color: #d9242e; border: 1px solid #ffd0d2; }
+        .modal-status-badge.unclaimed::before { background: #d9242e; }
+        .modal-status-badge.claimed   { background: #dcfce7; color: #1a7f37; border: 1px solid #bbf7d0; }
+        .modal-status-badge.claimed::before   { background: #28a745; }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 24px;
+            cursor: pointer;
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .modal-close:hover { color: #d9242e; background: #fff0f0; }
+
+        /* Modal body — stacked: image top, info below */
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 260px;
+            background: #f0f5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 12px;
+        }
+
+        .modal-info {
+            padding: 20px 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+        }
+        .modal-info-row { display: flex; flex-direction: column; gap: 3px; }
+        .modal-info-row.full { grid-column: 1 / -1; }
+        .modal-info-row label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #003d7a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .modal-info-row p {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Modal footer */
+        .modal-footer-bar {
+            padding: 12px 24px;
+            border-top: 1px solid #eee;
+            background: #f8f9fa;
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            flex-shrink: 0;
+        }
+        .modal-footer-bar.claimed-footer { background: #f0fdf4; border-top-color: #bbf7d0; color: #1a7f37; font-style: normal; font-weight: 600; }
+
+        /* ── ITEM CARD — fixed height image, consistent layout ── */
+        .item-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,61,122,0.08);
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid #eef0f4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0,61,122,0.14);
+        }
+
+        .item-card.card-claimed {
+            border-color: #bbf7d0;
+        }
+        .item-card.card-claimed:hover {
+            box-shadow: 0 10px 28px rgba(40,167,69,0.14);
+        }
+
+        /* Fixed-height image area — ALWAYS 185px */
+        .item-image {
+            position: relative;
+            height: 185px;
+            background: #eef2f7;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+            display: block;
+        }
+
+        .item-card:hover .item-image img {
+            transform: scale(1.04);
+        }
+
+        /* Default/fallback image placeholder */
+        .item-image img[src="assets/default/DEF.png"],
+        .item-image img[src="assets/default/CONF.png"] {
+            object-fit: contain;
+            padding: 24px;
+            background: #eef2f7;
+        }
+
+        /* Status strip — 4px coloured line at very top of image */
+        .status-strip {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            z-index: 2;
+        }
+        .status-strip.unclaimed { background: #d9242e; }
+        .status-strip.claimed   { background: #22c55e; }
+
+        /* Card body */
+        .item-details {
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #003d7a;
+            line-height: 1.3;
+            flex: 1;
+            /* clamp to 2 lines */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .item-card.card-claimed .item-name { color: #1a7f37; }
+
+        .product-code {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-family: monospace;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+        }
+        .product-code.unclaimed { color: #d9242e; background: #fff0f0; border: 1px solid #ffd0d2; }
+        .product-code.claimed   { color: #1a7f37; background: #dcfce7; border: 1px solid #bbf7d0; }
+
+        /* Meta row — category & location */
+        .item-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .item-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 11px;
+            color: #777;
+            font-weight: 500;
+        }
+
+        .item-meta span i {
+            font-size: 13px;
+            color: #003d7a;
+            opacity: 0.7;
+        }
+
+        /* Description — always 3 lines, no overflow */
+        .item-description {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.55;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        /* Footer — date left, status dot right */
+        .item-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            padding-top: 10px;
+            border-top: 1px solid #f0f2f5;
+            margin-top: auto;
+        }
+
+        .date-found {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: #999;
+            font-weight: 500;
+        }
+        .date-found i { font-size: 12px; color: #d9242e; }
+
+        /* Status dot — tiny coloured circle + text */
+        .status-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .status-dot::before {
+            content: '';
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .status-dot.unclaimed { color: #d9242e; }
+        .status-dot.unclaimed::before { background: #d9242e; box-shadow: 0 0 0 2px rgba(217,36,46,0.18); }
+        .status-dot.claimed   { color: #1a7f37; }
+        .status-dot.claimed::before   { background: #22c55e; box-shadow: 0 0 0 2px rgba(34,197,94,0.18); }
+
+        /* ===== NO RESULTS ===== */
+        .no-results {
+            max-width: 1200px;
+            margin: 60px auto;
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,61,122,0.08);
+        }
+
+        .no-results i {
+            font-size: 64px;
+            color: #d9242e;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .no-results h3 {
+            color: #003d7a;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .no-results p {
+            color: #888;
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: white;
+            color: #003d7a;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .pagination-btn:hover:not(.disabled) {
+            border-color: #d9242e;
+            color: #d9242e;
+        }
+
+        .pagination-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .pagination-numbers {
+            display: flex;
+            gap: 6px;
+        }
+
+        .pagination-number {
+            width: 40px; height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #e0e0e0;
+            background: white;
+            color: #003d7a;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .pagination-number:hover,
+        .pagination-number.active {
+            background: linear-gradient(135deg, #d9242e 0%, #c41e26 100%);
+            color: white;
+            border-color: #d9242e;
+        }
+
+        .pagination-ellipsis {
+            display: flex;
+            align-items: center;
+            color: #999;
+            font-weight: 600;
+            padding: 0 4px;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.55);
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 4% auto;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 61, 122, 0.2);
+            width: 92%;
+            max-width: 700px;
+            animation: slideIn 0.3s ease;
+            overflow: hidden;
+            border-top: 4px solid #d9242e;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal-content.claimed-modal {
+            border-top-color: #28a745;
+            box-shadow: 0 12px 40px rgba(40, 167, 69, 0.2);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-40px); opacity: 0; }
+            to   { transform: translateY(0);     opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 28px;
+            border-bottom: 2px solid #f0f5ff;
+            background: #f8f9fa;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .modal-header.claimed-header {
+            background: #d4edda;
+            border-bottom-color: #b1dfbb;
+        }
+
+        .modal-header h2 {
+            color: #003d7a;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .modal-status-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        .modal-status-inline.unclaimed {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffc107;
+        }
+
+        .modal-status-inline.claimed {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #28a745;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px; height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        .modal-close:hover {
+            color: #d9242e;
+            background: #f8d7da;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 0;
+        }
+
+        .modal-image {
+            background: #f0f5ff;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-image .no-image {
+            min-height: 280px;
+        }
+
+        .modal-info {
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .modal-info-row {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .modal-info-row label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #003d7a;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .modal-info-row p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .modal-status {
+            display: inline-flex;
+        }
+
+        .modal-footer-bar {
+            padding: 16px 28px;
+            border-top: 2px solid #f0f5ff;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .modal-footer-bar.claimed-footer {
+            background: #d4edda;
+            border-top-color: #b1dfbb;
+        }
+
+        .modal-footer-bar p {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .modal-footer-bar.claimed-footer p {
+            color: #155724;
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(248, 249, 250, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            gap: 20px;
+        }
+
+        .loading-spinner {
+            width: 50px; height: 50px;
+            border: 4px solid #f0f0f0;
+            border-top-color: #d9242e;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .loading-overlay p {
+            color: #003d7a;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 34px; }
+            .hero-subtitle { font-size: 15px; }
+            .hero { padding: 90px 20px 45px; }
+
+            .navbar-logo { width: 40px; }
+            .navbar-title { font-size: 20px; }
+            .item-count { display: none; }
+            .admin-link { padding: 7px 12px; font-size: 13px; }
+
+            .filter-card { padding: 16px; }
+            .filters-grid { grid-template-columns: 1fr 1fr; }
+
+            .items-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+
+            .modal-body { grid-template-columns: 1fr; }
+            .modal-image { min-height: 200px; }
+            .modal-content { margin: 10% auto; width: 95%; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 26px; }
+            .navbar-container { padding: 10px 15px; }
+            .filter-section { padding: 15px 12px; }
+            .catalog-section { padding: 12px; }
+            .filters-grid { grid-template-columns: 1fr; }
+            .items-grid { grid-template-columns: 1fr; }
+            .filter-actions { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== LOADING OVERLAY ===== -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Loading items catalog…</p>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="assets/logo/app_logo.png" alt="ClaimIT Logo" class="navbar-app-logo"
+                     onerror="this.style.display='none'">
+                <span class="navbar-title">ClaimIT <span class="navbar-title-sub">Catalog</span></span>
+            </a>
+            <div class="navbar-actions">
+                <span class="item-count" id="unclaimedBadge">
+                    <i class='bx bx-package'></i>
+                    <span id="unclaimedCount">—</span> Items Unclaimed
+                </span>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Lost Something?</h1>
+            <p class="hero-subtitle">Browse our catalog of found items and reclaim what's yours</p>
+            <p class="hero-tagline">Lost it? Don't panic. <strong>ClaimIT.</strong></p>
+        </div>
+    </section>
+
+    <!-- ===== FILTER SECTION ===== -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-card">
+                <h3>Find Your Item</h3>
+
+                <div class="search-container">
+                    <i class='bx bx-search'></i>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Search by item name, description, or product code…"
+                    >
+                </div>
+
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="categoryFilter">
+                            <i class='bx bx-category'></i>
+                            Category
+                        </label>
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Books">Books</option>
+                            <option value="IDs/Cards">IDs/Cards</option>
+                            <option value="Bags">Bags</option>
+                            <option value="School Supplies">School Supplies</option>
+                            <option value="Sports Equipment">Sports Equipment</option>
+                            <option value="Personal Items">Personal Items</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="statusFilter">
+                            <i class='bx bx-info-circle'></i>
+                            Status
+                        </label>
+                        <select id="statusFilter">
+                            <option value="Unclaimed">Unclaimed</option>
+                            <option value="">All Status</option>
+                            <option value="Claimed">Claimed</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="dateFrom">
+                            <i class='bx bx-calendar'></i>
+                            From Date
+                        </label>
+                        <input type="date" id="dateFrom">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="dateTo">
+                            <i class='bx bx-calendar'></i>
+                            To Date
+                        </label>
+                        <input type="date" id="dateTo">
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button class="btn-primary" id="applyBtn">
+                        <i class='bx bx-filter-alt'></i> Apply Filters
+                    </button>
+                    <button class="btn-secondary" id="clearBtn">
+                        <i class='bx bx-x'></i> Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATALOG ===== -->
+    <section class="catalog-section">
+        <div class="results-bar container">
+            <p class="results-count" id="resultsCount">Loading…</p>
+        </div>
+
+        <div class="items-grid" id="itemsGrid"></div>
+
+        <div class="no-results" id="noResults" style="display:none;">
+            <i class='bx bx-search-alt'></i>
+            <h3>No Items Found</h3>
+            <p>Try adjusting your filters or search criteria.</p>
+            <button class="btn-primary" id="noResultsClear">
+                <i class='bx bx-x'></i> Clear Filters
+            </button>
+        </div>
+
+        <div class="pagination" id="paginationContainer"></div>
+    </section>
+
+    <!-- ===== ITEM DETAIL MODAL ===== -->
+    <div class="modal" id="itemModal">
+        <div class="modal-content" id="modalContentBox">
+            <div class="modal-header" id="modalHeaderBox">
+                <div class="modal-header-left">
+                    <h2 id="modalTitle">Item Details</h2>
+                    <div class="modal-meta-row" id="modalMetaRow"></div>
+                </div>
+                <button class="modal-close" id="modalClose">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image" id="modalImageWrap"></div>
+                <div class="modal-info" id="modalInfo"></div>
+            </div>
+            <div class="modal-footer-bar" id="modalFooterBar">
+                Visit the Lost &amp; Found Office to claim this item. Bring a valid ID.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ============================================
+           CLAIMIT - STATIC CATALOG ENGINE
+           Reads from data.json, handles all filtering,
+           searching, pagination, and modal display.
+           ============================================ */
+
+        const ITEMS_PER_PAGE = 12;
+
+        let allItems      = [];
+        let filteredItems = [];
+        let currentPage   = 1;
+
+        // ===== LOAD DATA =====
+        async function loadData() {
+            try {
+                const res = await fetch('data.json');
+                if (!res.ok) throw new Error('Failed to load data.json');
+                const data = await res.json();
+                allItems = data.items;
+                init();
+            } catch (err) {
+                console.error(err);
+                document.getElementById('loadingOverlay').innerHTML =
+                    `<p style="color:#d9242e;font-weight:700;">⚠ Could not load data.json. Make sure it's in the same directory.</p>`;
+            }
+        }
+
+        // ===== INIT =====
+        function init() {
+            // Update unclaimed badge
+            const unclaimed = allItems.filter(i => i.status === 'Unclaimed').length;
+            document.getElementById('unclaimedCount').textContent = unclaimed;
+
+            // Default: show Unclaimed only
+            applyFilters();
+
+            // Hide loading overlay
+            document.getElementById('loadingOverlay').style.display = 'none';
+        }
+
+        // ===== FILTER LOGIC =====
+        function applyFilters() {
+            const search   = document.getElementById('searchInput').value.trim().toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const status   = document.getElementById('statusFilter').value;
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo   = document.getElementById('dateTo').value;
+
+            filteredItems = allItems.filter(item => {
+                // Search
+                if (search) {
+                    const haystack = [item.item_name, item.description, item.product_code, item.category]
+                        .join(' ').toLowerCase();
+                    if (!haystack.includes(search)) return false;
+                }
+                // Category
+                if (category && item.category !== category) return false;
+                // Status
+                if (status && item.status !== status) return false;
+                // Date from
+                if (dateFrom && item.date_found < dateFrom) return false;
+                // Date to
+                if (dateTo && item.date_found > dateTo) return false;
+
+                return true;
+            });
+
+            // Sort newest first
+            filteredItems.sort((a, b) => b.date_found.localeCompare(a.date_found));
+
+            currentPage = 1;
+            renderPage();
+        }
+
+        // ===== RENDER =====
+        function renderPage() {
+            const grid       = document.getElementById('itemsGrid');
+            const noResults  = document.getElementById('noResults');
+            const resultsCount = document.getElementById('resultsCount');
+
+            grid.innerHTML = '';
+
+            if (filteredItems.length === 0) {
+                noResults.style.display = 'block';
+                grid.style.display = 'none';
+                resultsCount.innerHTML = 'No items matched your search.';
+                document.getElementById('paginationContainer').innerHTML = '';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            grid.style.display = 'grid';
+
+            const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+            const start = (currentPage - 1) * ITEMS_PER_PAGE;
+            const pageItems = filteredItems.slice(start, start + ITEMS_PER_PAGE);
+
+            resultsCount.innerHTML =
+                `Showing <strong>${start + 1}–${Math.min(start + ITEMS_PER_PAGE, filteredItems.length)}</strong> of <strong>${filteredItems.length}</strong> item${filteredItems.length !== 1 ? 's' : ''}`;
+
+            pageItems.forEach(item => {
+                grid.appendChild(buildCard(item));
+            });
+
+            renderPagination(totalPages);
+        }
+
+        // ===== BUILD CARD =====
+        const CONFIDENTIAL_CATEGORIES = ['IDs/Cards'];
+
+        function getImageSrc(item) {
+            if (CONFIDENTIAL_CATEGORIES.includes(item.category)) {
+                return 'assets/default/CONF.png';
+            }
+            return item.image;
+        }
+
+        function buildCard(item) {
+            const card = document.createElement('div');
+            const isClaimed = item.status === 'Claimed';
+            card.className = 'item-card' + (isClaimed ? ' card-claimed' : '');
+            card.addEventListener('click', () => openModal(item));
+
+            const imgSrc  = getImageSrc(item);
+            const sc      = isClaimed ? 'claimed' : 'unclaimed';
+            const dateStr = formatDate(item.date_found);
+            const desc    = item.description.length > 115
+                ? item.description.slice(0, 115) + '…'
+                : item.description;
+
+            card.innerHTML = `
+                <div class="item-image">
+                    <div class="status-strip ${sc}"></div>
+                    <img src="${imgSrc}" alt="${esc(item.item_name)}"
+                         onerror="this.src='assets/default/DEF.png'">
+                </div>
+                <div class="item-details">
+                    <div class="item-header">
+                        <h3 class="item-name">${esc(item.item_name)}</h3>
+                        <span class="product-code ${sc}">${esc(item.product_code)}</span>
+                    </div>
+                    <div class="item-meta">
+                        <span><i class='bx bx-category-alt'></i>${esc(item.category)}</span>
+                        <span><i class='bx bx-map'></i>${esc(item.found_location)}</span>
+                    </div>
+                    <p class="item-description">${esc(desc)}</p>
+                    <div class="item-footer">
+                        <span class="date-found"><i class='bx bx-time'></i>Found: ${dateStr}</span>
+                        <span class="status-dot ${sc}">${esc(item.status)}</span>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // ===== RENDER PAGINATION =====
+        function renderPagination(totalPages) {
+            const container = document.getElementById('paginationContainer');
+            container.innerHTML = '';
+
+            if (totalPages <= 1) return;
+
+            // Prev
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'pagination-btn' + (currentPage === 1 ? ' disabled' : '');
+            prevBtn.innerHTML = `<i class='bx bx-chevron-left'></i> Previous`;
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(); scrollToTop(); } });
+            container.appendChild(prevBtn);
+
+            // Numbers
+            const numWrap = document.createElement('div');
+            numWrap.className = 'pagination-numbers';
+
+            const start = Math.max(1, currentPage - 2);
+            const end   = Math.min(totalPages, currentPage + 2);
+
+            if (start > 1) {
+                numWrap.appendChild(makePageBtn(1, totalPages));
+                if (start > 2) {
+                    const ellipsis = document.createElement('span');
+                    ellipsis.className = 'pagination-ellipsis';
+                    ellipsis.textContent = '…';
+                    numWrap.appendChild(ellipsis);
+                }
+            }
+
+            for (let p = start; p <= end; p++) {
+                numWrap.appendChild(makePageBtn(p, totalPages));
+            }
+
+            if (end < totalPages) {
+                if (end < totalPages - 1) {
+                    const ellipsis = document.createElement('span');
+                    ellipsis.className = 'pagination-ellipsis';
+                    ellipsis.textContent = '…';
+                    numWrap.appendChild(ellipsis);
+                }
+                numWrap.appendChild(makePageBtn(totalPages, totalPages));
+            }
+
+            container.appendChild(numWrap);
+
+            // Next
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'pagination-btn' + (currentPage === totalPages ? ' disabled' : '');
+            nextBtn.innerHTML = `Next <i class='bx bx-chevron-right'></i>`;
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(); scrollToTop(); } });
+            container.appendChild(nextBtn);
+        }
+
+        function makePageBtn(p) {
+            const btn = document.createElement('button');
+            btn.className = 'pagination-number' + (p === currentPage ? ' active' : '');
+            btn.textContent = p;
+            btn.addEventListener('click', () => { currentPage = p; renderPage(); scrollToTop(); });
+            return btn;
+        }
+
+        function scrollToTop() {
+            document.querySelector('.catalog-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ===== MODAL =====
+        function openModal(item) {
+            const modal        = document.getElementById('itemModal');
+            const modalContent = document.getElementById('modalContentBox');
+            const imgWrap      = document.getElementById('modalImageWrap');
+            const info         = document.getElementById('modalInfo');
+            const title        = document.getElementById('modalTitle');
+            const modalHeader  = document.getElementById('modalHeaderBox');
+            const footerBar    = document.getElementById('modalFooterBar');
+
+            const isClaimed    = item.status === 'Claimed';
+            const sc           = isClaimed ? 'claimed' : 'unclaimed';
+
+            modalContent.className = 'modal-content' + (isClaimed ? ' claimed-modal' : '');
+            modalHeader.className  = 'modal-header'  + (isClaimed ? ' claimed-header' : '');
+            footerBar.className    = 'modal-footer-bar' + (isClaimed ? ' claimed-footer' : '');
+
+            title.textContent = item.item_name;
+
+            // Meta row: product code + status badge
+            document.getElementById('modalMetaRow').innerHTML = `
+                <span class="modal-product-code ${sc}">${esc(item.product_code)}</span>
+                <span class="modal-status-badge ${sc}">${esc(item.status)}</span>
+            `;
+
+            const imgSrc = getImageSrc(item);
+            imgWrap.innerHTML = `
+                <img src="${imgSrc}" alt="${esc(item.item_name)}"
+                     onerror="this.src='assets/default/DEF.png'">
+            `;
+
+            info.innerHTML = `
+                <div class="modal-info-row">
+                    <label>Category</label>
+                    <p>${esc(item.category)}</p>
+                </div>
+                <div class="modal-info-row">
+                    <label>Found Location</label>
+                    <p>${esc(item.found_location)}</p>
+                </div>
+                <div class="modal-info-row">
+                    <label>Date Found</label>
+                    <p>${formatDate(item.date_found)}</p>
+                </div>
+                <div class="modal-info-row full">
+                    <label>Description</label>
+                    <p>${esc(item.description)}</p>
+                </div>
+            `;
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('itemModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ===== EVENTS =====
+        document.getElementById('applyBtn').addEventListener('click', applyFilters);
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('statusFilter').value = 'Unclaimed';
+            document.getElementById('dateFrom').value = '';
+            document.getElementById('dateTo').value = '';
+            applyFilters();
+        });
+
+        document.getElementById('noResultsClear').addEventListener('click', () => {
+            document.getElementById('clearBtn').click();
+        });
+
+        // Search on Enter
+        document.getElementById('searchInput').addEventListener('keydown', e => {
+            if (e.key === 'Enter') applyFilters();
+        });
+
+        // Modal close
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('itemModal').addEventListener('click', e => {
+            if (e.target === document.getElementById('itemModal')) closeModal();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ===== UTILS =====
+        function esc(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        // ===== KICK OFF =====
+        loadData();
+    </script>
+</body>
+</html>

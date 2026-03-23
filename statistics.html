@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics | ClaimIT</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .navbar-app-logo{width:38px;height:38px;object-fit:contain;}
+        .navbar-title-sub{color:#003d7a;font-weight:700;}
+        .logout-btn{background:none;border:none;color:#d9242e;font-size:20px;cursor:pointer;padding:6px;border-radius:6px;}
+        .logout-btn:hover{background:#f8d7da;}
+        .admin_name{color:#333;font-weight:600;font-size:14px;margin-right:8px;}
+        .navbar-profile{display:flex;align-items:center;}
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+        .stat-card {
+            background: white; padding: 20px 22px; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,61,122,0.08); border-top: 4px solid #d9242e;
+        }
+        .stat-card.green { border-top-color: #28a745; }
+        .stat-card.blue  { border-top-color: #003d7a; }
+        .stat-card .label { font-size:11px; color:#888; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
+        .stat-card .val   { font-size:30px; font-weight:800; color:#003d7a; margin-top:4px; }
+        .stat-card.green .val { color:#1a7f37; }
+
+        .section-block {
+            background: white; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,61,122,0.08);
+            margin-bottom: 28px; overflow: hidden;
+        }
+        .section-head {
+            display:flex; justify-content:space-between; align-items:center;
+            padding: 18px 24px; background: #f8f9fa;
+            border-bottom: 2px solid #f0f5ff;
+        }
+        .section-head h3 { color:#003d7a; font-size:16px; font-weight:800; margin:0; }
+        .section-body { padding: 20px 24px; }
+
+        .toggle-btn {
+            background: linear-gradient(135deg,#d9242e,#c41e26);
+            color:white; border:none; width:36px; height:36px;
+            border-radius:8px; cursor:pointer; font-size:18px;
+            display:flex; align-items:center; justify-content:center;
+            transition: opacity 0.2s;
+        }
+        .toggle-btn:hover { opacity:0.85; }
+
+        .collapsed-body { display:none; }
+
+        .badge { display:inline-block; padding:3px 9px; border-radius:20px; font-size:11px; font-weight:700; }
+        .badge-success { background:#dcfce7; color:#1a7f37; border:1px solid #bbf7d0; }
+        .badge-warning { background:#fff0f0; color:#d9242e; border:1px solid #ffd0d2; }
+
+        /* bar chart */
+        .bar-wrap { display:flex; flex-direction:column; gap:10px; }
+        .bar-row { display:flex; align-items:center; gap:12px; }
+        .bar-label { width:130px; font-size:12px; font-weight:600; color:#333; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .bar-track { flex:1; background:#f0f5ff; border-radius:20px; height:20px; overflow:hidden; }
+        .bar-fill  { height:100%; border-radius:20px; background:linear-gradient(135deg,#d9242e,#c41e26); transition:width 0.6s ease; }
+        .bar-fill.green { background:linear-gradient(135deg,#28a745,#1e7e34); }
+        .bar-count { font-size:12px; font-weight:700; color:#333; width:36px; text-align:right; flex-shrink:0; }
+
+        /* claimed items table */
+        .pc-tag { font-family:monospace; font-size:11px; font-weight:700; padding:2px 7px; border-radius:4px; background:#dcfce7; color:#1a7f37; border:1px solid #bbf7d0; }
+
+        .month-input {
+            padding:8px 12px; border:2px solid #003d7a; border-radius:8px;
+            font-size:13px; font-family:inherit; color:#003d7a; font-weight:600;
+            cursor:pointer;
+        }
+        .month-input:focus { outline:none; }
+    </style>
+</head>
+<body>
+    <div id="sidebarMount"></div>
+    <div id="navbarMount"></div>
+
+    <section class="home-section">
+        <div class="home-content">
+            <h2 style="color:#003d7a;margin-bottom:24px;font-size:22px;">Statistics &amp; Analytics</h2>
+
+            <!-- OVERALL -->
+            <div class="section-block">
+                <div class="section-head">
+                    <h3>Overall Statistics</h3>
+                    <button class="toggle-btn" onclick="toggleSection('overall')"><i class='bx bx-show' id="overallIcon"></i></button>
+                </div>
+                <div class="section-body" id="overall">
+                    <div class="stat-grid" id="overallGrid"></div>
+                </div>
+            </div>
+
+            <!-- THIS WEEK -->
+            <div class="section-block">
+                <div class="section-head">
+                    <h3>This Week <span id="thisWeekRange" style="font-size:12px;color:#888;font-weight:500;margin-left:8px;"></span></h3>
+                    <button class="toggle-btn" onclick="toggleSection('thisWeek')"><i class='bx bx-show' id="thisWeekIcon"></i></button>
+                </div>
+                <div class="section-body" id="thisWeek">
+                    <div class="stat-grid" id="thisWeekGrid"></div>
+                </div>
+            </div>
+
+            <!-- PREV WEEK -->
+            <div class="section-block">
+                <div class="section-head">
+                    <h3>Previous Week <span id="prevWeekRange" style="font-size:12px;color:#888;font-weight:500;margin-left:8px;"></span></h3>
+                    <button class="toggle-btn" onclick="toggleSection('prevWeek')"><i class='bx bx-show' id="prevWeekIcon"></i></button>
+                </div>
+                <div class="section-body" id="prevWeek">
+                    <div class="stat-grid" id="prevWeekGrid"></div>
+                </div>
+            </div>
+
+            <!-- MONTHLY -->
+            <div class="section-block">
+                <div class="section-head">
+                    <h3>Monthly Statistics</h3>
+                    <input type="month" id="monthPicker" class="month-input" oninput="renderMonthly()">
+                </div>
+                <div class="section-body">
+                    <div class="stat-grid" id="monthlyGrid"></div>
+                </div>
+            </div>
+
+            <!-- CATEGORY BREAKDOWN -->
+            <div class="section-block">
+                <div class="section-head">
+                    <h3>Items by Category</h3>
+                </div>
+                <div class="section-body">
+                    <div class="bar-wrap" id="categoryBars"></div>
+                    <br>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Total</th>
+                                    <th>Claimed</th>
+                                    <th>Unclaimed</th>
+                                    <th>Claim Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoryTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLAIMED ITEMS HISTORY -->
+            <div class="section-block">
+                <div class="section-head">
+                    <h3>Claimed Items History</h3>
+                </div>
+                <div class="section-body">
+                    <div class="filter-section" style="margin-bottom:16px;">
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label>Category</label>
+                                <select id="claimedCatFilter">
+                                    <option value="">All Categories</option>
+                                    <option>Electronics</option><option>Clothing</option>
+                                    <option>Accessories</option><option>Books</option>
+                                    <option>IDs/Cards</option><option>Bags</option>
+                                    <option>School Supplies</option><option>Sports Equipment</option>
+                                    <option>Personal Items</option><option>Other</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>From Date</label>
+                                <input type="date" id="claimedFrom">
+                            </div>
+                            <div class="filter-group">
+                                <label>To Date</label>
+                                <input type="date" id="claimedTo">
+                            </div>
+                            <button class="filter-btn" onclick="renderClaimedTable()"><i class='bx bx-filter-alt'></i> Apply</button>
+                            <button class="filter-btn clear-btn" onclick="clearClaimedFilters()"><i class='bx bx-x'></i> Clear</button>
+                        </div>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product Code</th>
+                                    <th>Item Name</th>
+                                    <th>Category</th>
+                                    <th>Location Found</th>
+                                    <th>Date Found</th>
+                                    <th>Claimed By</th>
+                                </tr>
+                            </thead>
+                            <tbody id="claimedTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="admin-state.js"></script>
+    <script>
+    requireAuth();
+    let allItems = [];
+
+    async function init() {
+        await loadState();
+        document.getElementById('sidebarMount').outerHTML = renderSidebar('statistics.html');
+        document.getElementById('navbarMount').outerHTML  = renderNavbar('statistics.html');
+        allItems = getItems();
+
+        // Set month picker to current month
+        const now = new Date();
+        document.getElementById('monthPicker').value = now.toISOString().slice(0,7);
+
+        renderAll();
+    }
+
+    function renderAll() {
+        renderOverall();
+        renderWeek('thisWeek', thisWeekRange());
+        renderWeek('prevWeek', prevWeekRange());
+        renderMonthly();
+        renderCategoryBreakdown();
+        renderClaimedTable();
+    }
+
+    /* ── DATE HELPERS ─────────────────────── */
+    function isoDate(d) { return d.toISOString().slice(0,10); }
+
+    function thisWeekRange() {
+        const now  = new Date();
+        const day  = now.getDay() || 7;
+        const mon  = new Date(now); mon.setDate(now.getDate() - day + 1);
+        const sun  = new Date(mon); sun.setDate(mon.getDate() + 6);
+        return { from: isoDate(mon), to: isoDate(sun) };
+    }
+
+    function prevWeekRange() {
+        const now  = new Date();
+        const day  = now.getDay() || 7;
+        const mon  = new Date(now); mon.setDate(now.getDate() - day - 6);
+        const sun  = new Date(mon); sun.setDate(mon.getDate() + 6);
+        return { from: isoDate(mon), to: isoDate(sun) };
+    }
+
+    function fmtDate(d) {
+        if (!d) return '—';
+        return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    }
+
+    /* ── STAT CARDS ───────────────────────── */
+    function statCard(label, val, cls='') {
+        return `<div class="stat-card ${cls}"><div class="label">${label}</div><div class="val">${val}</div></div>`;
+    }
+
+    function renderOverall() {
+        const total   = allItems.length;
+        const claimed = allItems.filter(i => i.status==='Claimed').length;
+        const rate    = total > 0 ? Math.round(claimed/total*100) : 0;
+        document.getElementById('overallGrid').innerHTML =
+            statCard('Total Items', total, 'blue') +
+            statCard('Claimed', claimed, 'green') +
+            statCard('Unclaimed', total - claimed) +
+            statCard('Claim Rate', rate + '%', 'blue');
+    }
+
+    function renderWeek(sectionId, range) {
+        const items = allItems.filter(i => i.date_found >= range.from && i.date_found <= range.to);
+        const claimed = items.filter(i => i.status==='Claimed').length;
+        const label   = `${fmtDate(range.from)} – ${fmtDate(range.to)}`;
+        document.getElementById(sectionId + 'Range').textContent = label;
+        document.getElementById(sectionId + 'Grid').innerHTML =
+            statCard('Total Found', items.length, 'blue') +
+            statCard('Claimed', claimed, 'green') +
+            statCard('Unclaimed', items.length - claimed);
+    }
+
+    function renderMonthly() {
+        const ym    = document.getElementById('monthPicker').value;
+        if (!ym) return;
+        const items = allItems.filter(i => i.date_found && i.date_found.startsWith(ym));
+        const claimed = items.filter(i => i.status==='Claimed').length;
+        const rate    = items.length > 0 ? Math.round(claimed/items.length*100) : 0;
+        document.getElementById('monthlyGrid').innerHTML =
+            statCard('Total Found', items.length, 'blue') +
+            statCard('Claimed', claimed, 'green') +
+            statCard('Unclaimed', items.length - claimed) +
+            statCard('Claim Rate', rate + '%', 'blue');
+    }
+
+    /* ── CATEGORY BREAKDOWN ───────────────── */
+    function renderCategoryBreakdown() {
+        const cats = {};
+        allItems.forEach(i => {
+            if (!cats[i.category]) cats[i.category] = { total:0, claimed:0 };
+            cats[i.category].total++;
+            if (i.status==='Claimed') cats[i.category].claimed++;
+        });
+
+        const sorted = Object.entries(cats).sort((a,b) => b[1].total - a[1].total);
+        const maxVal = sorted[0]?.[1].total || 1;
+
+        // bars
+        document.getElementById('categoryBars').innerHTML = sorted.map(([cat, d]) => `
+            <div class="bar-row">
+                <span class="bar-label" title="${esc(cat)}">${esc(cat)}</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:${Math.round(d.total/maxVal*100)}%"></div>
+                </div>
+                <span class="bar-count">${d.total}</span>
+            </div>
+        `).join('');
+
+        // table
+        document.getElementById('categoryTableBody').innerHTML = sorted.map(([cat, d]) => {
+            const unclaimed = d.total - d.claimed;
+            const rate = Math.round(d.claimed / d.total * 100);
+            return `<tr>
+                <td><strong>${esc(cat)}</strong></td>
+                <td>${d.total}</td>
+                <td><span class="badge badge-success">${d.claimed}</span></td>
+                <td><span class="badge badge-warning">${unclaimed}</span></td>
+                <td><strong>${rate}%</strong></td>
+            </tr>`;
+        }).join('') || `<tr><td colspan="5" style="text-align:center;color:#aaa;padding:30px;">No data available.</td></tr>`;
+    }
+
+    /* ── CLAIMED TABLE ────────────────────── */
+    function renderClaimedTable() {
+        const cat  = document.getElementById('claimedCatFilter').value;
+        const from = document.getElementById('claimedFrom').value;
+        const to   = document.getElementById('claimedTo').value;
+
+        let items = allItems.filter(i => i.status === 'Claimed');
+        if (cat)  items = items.filter(i => i.category === cat);
+        if (from) items = items.filter(i => i.date_found >= from);
+        if (to)   items = items.filter(i => i.date_found <= to);
+
+        document.getElementById('claimedTableBody').innerHTML = items.length
+            ? items.map(i => `<tr>
+                <td><span class="pc-tag">${esc(i.product_code)}</span></td>
+                <td><strong>${esc(i.item_name)}</strong></td>
+                <td>${esc(i.category)}</td>
+                <td>${esc(i.found_location)}</td>
+                <td>${fmtDate(i.date_found)}</td>
+                <td>${i.claimer_name ? esc(i.claimer_name) + ' (' + esc(i.claimer_id||'—') + ')' : '<em style="color:#aaa">—</em>'}</td>
+            </tr>`).join('')
+            : `<tr><td colspan="6" style="text-align:center;color:#aaa;padding:30px;">No claimed items found.</td></tr>`;
+    }
+
+    function clearClaimedFilters() {
+        document.getElementById('claimedCatFilter').value = '';
+        document.getElementById('claimedFrom').value      = '';
+        document.getElementById('claimedTo').value        = '';
+        renderClaimedTable();
+    }
+
+    /* ── TOGGLE SECTIONS ──────────────────── */
+    function toggleSection(id) {
+        const body = document.getElementById(id);
+        const icon = document.getElementById(id + 'Icon');
+        const collapsed = body.classList.toggle('collapsed-body');
+        icon.className = collapsed ? 'bx bx-hide' : 'bx bx-show';
+    }
+
+    function esc(s) {
+        return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    init();
+    </script>
+</body>
+</html>

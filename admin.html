@@ -432,6 +432,8 @@
         pendingClaimId = id;
         document.getElementById('claimerName').value = '';
         document.getElementById('claimerId').value   = '';
+        // Close the detail panel first so it doesn't sit behind the modal
+        closePanel();
         document.getElementById('claimModal').style.display = 'block';
         setTimeout(() => document.getElementById('claimerName').focus(), 100);
 

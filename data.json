@@ -2,553 +2,553 @@
   "items": [
     {
       "item_id": 1,
-      "product_code": "2025-03-001",
+      "product_code": "2026-03-001",
       "item_name": "Samsung Galaxy Earbuds",
       "category": "Electronics",
       "found_location": "Library - 2nd Floor",
       "description": "Black Samsung Galaxy Buds2 Pro found near the study tables. Case has a small sticker on the back. Fully charged when found.",
       "status": "Unclaimed",
-      "date_found": "2025-03-01",
-      "image": "assets/images/2025-03-001.jpg"
+      "date_found": "2026-03-01",
+      "image": "assets/images/2026-03-001.jpg"
     },
     {
       "item_id": 2,
-      "product_code": "2025-03-003",
+      "product_code": "2026-03-003",
       "item_name": "Black Jansport Backpack",
       "category": "Bags",
       "found_location": "Canteen",
       "description": "Medium-sized black JanSport backpack with a red keychain attached. Contains some notebooks inside. Left near the eating area.",
       "status": "Unclaimed",
-      "date_found": "2025-03-02",
-      "image": "assets/images/2025-03-003.jpg"
+      "date_found": "2026-03-02",
+      "image": "assets/images/2026-03-003.jpg"
     },
     {
       "item_id": 3,
-      "product_code": "2025-02-002",
+      "product_code": "2026-02-002",
       "item_name": "MMCM Student ID",
       "category": "IDs/Cards",
       "found_location": "Hallway - Building A",
       "description": "Student ID belonging to a 3rd year student. Found on the floor near the stairwell. Card is still in good condition.",
       "status": "Claimed",
-      "date_found": "2025-02-28",
-      "image": "assets/images/2025-02-002.jpg"
+      "date_found": "2026-02-28",
+      "image": "assets/images/2026-02-002.jpg"
     },
     {
       "item_id": 4,
-      "product_code": "2025-03-005",
+      "product_code": "2026-03-005",
       "item_name": "Apple AirPods (3rd Gen)",
       "category": "Electronics",
       "found_location": "Gymnasium",
       "description": "White Apple AirPods 3rd generation with charging case. Found on the bleachers after PE class. Serial number visible inside case.",
       "status": "Unclaimed",
-      "date_found": "2025-03-03",
-      "image": "assets/images/2025-03-005.jpg"
+      "date_found": "2026-03-03",
+      "image": "assets/images/2026-03-005.jpg"
     },
     {
       "item_id": 5,
-      "product_code": "2025-03-007",
+      "product_code": "2026-03-007",
       "item_name": "Blue MMCM PE Shirt",
       "category": "Clothing",
       "found_location": "Gymnasium - Locker Room",
       "description": "Official MMCM PE uniform shirt in blue, size Medium. Has the name written on the tag in marker but it's faded and unreadable.",
       "status": "Unclaimed",
-      "date_found": "2025-03-04",
-      "image": "assets/images/2025-03-007.jpg"
+      "date_found": "2026-03-04",
+      "image": "assets/images/2026-03-007.jpg"
     },
     {
       "item_id": 6,
-      "product_code": "2025-03-008",
+      "product_code": "2026-03-008",
       "item_name": "Silver Wristwatch",
       "category": "Accessories",
       "found_location": "Canteen",
       "description": "Silver analog wristwatch with a metal strap. Brand appears to be Casio. Found on one of the tables during lunch break.",
       "status": "Unclaimed",
-      "date_found": "2025-03-05",
-      "image": "assets/images/2025-03-008.jpg"
+      "date_found": "2026-03-05",
+      "image": "assets/images/2026-03-008.jpg"
     },
     {
       "item_id": 7,
-      "product_code": "2025-03-009",
+      "product_code": "2026-03-009",
       "item_name": "Calculus Textbook",
       "category": "Books",
       "found_location": "Library - 3rd Floor",
       "description": "Calculus: Early Transcendentals by James Stewart, 8th edition. Has sticky notes and highlighter marks throughout. No name written inside.",
       "status": "Unclaimed",
-      "date_found": "2025-03-05",
-      "image": "assets/images/2025-03-009.jpg"
+      "date_found": "2026-03-05",
+      "image": "assets/images/2026-03-009.jpg"
     },
     {
       "item_id": 8,
-      "product_code": "2025-02-001",
+      "product_code": "2026-02-001",
       "item_name": "Phone Charger (Type-C)",
       "category": "Electronics",
       "found_location": "Classroom 305",
       "description": "White USB-C phone charger with a 1-meter cable. Anker brand. Plug adapter still attached. Found plugged into the wall outlet.",
       "status": "Claimed",
-      "date_found": "2025-02-25",
-      "image": "assets/images/2025-02-001.jpg"
+      "date_found": "2026-02-25",
+      "image": "assets/images/2026-02-001.jpg"
     },
     {
       "item_id": 9,
-      "product_code": "2025-03-011",
+      "product_code": "2026-03-011",
       "item_name": "Prescription Eyeglasses",
       "category": "Personal Items",
       "found_location": "Library - 2nd Floor",
       "description": "Black metal-framed prescription glasses inside a hard green case. Left on a table near the window section. Strong prescription lenses.",
       "status": "Unclaimed",
-      "date_found": "2025-03-06",
-      "image": "assets/images/2025-03-011.jpg"
+      "date_found": "2026-03-06",
+      "image": "assets/images/2026-03-011.jpg"
     },
     {
       "item_id": 10,
-      "product_code": "2025-03-013",
+      "product_code": "2026-03-013",
       "item_name": "Staedtler Geometry Set",
       "category": "School Supplies",
       "found_location": "Classroom 201",
       "description": "Complete Staedtler geometry set in a yellow tin case. Includes compass, protractor, ruler, and set squares. Found under a desk.",
       "status": "Unclaimed",
-      "date_found": "2025-03-07",
-      "image": "assets/images/2025-03-013.jpg"
+      "date_found": "2026-03-07",
+      "image": "assets/images/2026-03-013.jpg"
     },
     {
       "item_id": 11,
-      "product_code": "2025-03-014",
+      "product_code": "2026-03-014",
       "item_name": "Gray Drawstring Bag",
       "category": "Bags",
       "found_location": "Gymnasium",
       "description": "Plain gray drawstring bag with a Nike logo. Contains a water bottle and a towel inside. Found near the equipment room.",
       "status": "Unclaimed",
-      "date_found": "2025-03-07",
-      "image": "assets/images/2025-03-014.jpg"
+      "date_found": "2026-03-07",
+      "image": "assets/images/2026-03-014.jpg"
     },
     {
       "item_id": 12,
-      "product_code": "2025-03-016",
+      "product_code": "2026-03-016",
       "item_name": "Portable Power Bank",
       "category": "Electronics",
       "found_location": "Library - 1st Floor",
       "description": "Romoss 20,000 mAh black power bank. Two USB-A ports and one USB-C port. Still has about 60% charge. Found on a reading table.",
       "status": "Unclaimed",
-      "date_found": "2025-03-08",
-      "image": "assets/images/2025-03-016.jpg"
+      "date_found": "2026-03-08",
+      "image": "assets/images/2026-03-016.jpg"
     },
     {
       "item_id": 13,
-      "product_code": "2025-03-002",
+      "product_code": "2026-03-002",
       "item_name": "BDO ATM Card",
       "category": "IDs/Cards",
       "found_location": "Canteen - Cashier Area",
       "description": "BDO Savings Account ATM debit card. Found near the cashier counter. Card is still valid as per the expiry date visible on front.",
       "status": "Claimed",
-      "date_found": "2025-03-01",
-      "image": "assets/images/2025-03-002.jpg"
+      "date_found": "2026-03-01",
+      "image": "assets/images/2026-03-002.jpg"
     },
     {
       "item_id": 14,
-      "product_code": "2025-03-017",
+      "product_code": "2026-03-017",
       "item_name": "Gold Bracelet",
       "category": "Accessories",
       "found_location": "Restroom - Building B",
       "description": "Thin gold-colored chain bracelet with a heart-shaped charm. Found on the sink counter in the ladies' restroom on the 2nd floor.",
       "status": "Unclaimed",
-      "date_found": "2025-03-08",
-      "image": "assets/images/2025-03-017.jpg"
+      "date_found": "2026-03-08",
+      "image": "assets/images/2026-03-017.jpg"
     },
     {
       "item_id": 15,
-      "product_code": "2025-03-019",
+      "product_code": "2026-03-019",
       "item_name": "Black Hoodie Jacket",
       "category": "Clothing",
       "found_location": "Library - 3rd Floor",
       "description": "Plain black hoodie with no visible brand. Size Large. Left hanging on a chair in the reading section. Has a small tear on the left pocket.",
       "status": "Unclaimed",
-      "date_found": "2025-03-09",
-      "image": "assets/images/2025-03-019.jpg"
+      "date_found": "2026-03-09",
+      "image": "assets/images/2026-03-019.jpg"
     },
     {
       "item_id": 16,
-      "product_code": "2025-03-020",
+      "product_code": "2026-03-020",
       "item_name": "Casio Scientific Calculator",
       "category": "Electronics",
       "found_location": "Classroom 408",
       "description": "Casio FX-991ES Plus scientific calculator. Found inside a desk compartment after class. Name is written on the back but is partially erased.",
       "status": "Unclaimed",
-      "date_found": "2025-03-09",
-      "image": "assets/images/2025-03-020.jpg"
+      "date_found": "2026-03-09",
+      "image": "assets/images/2026-03-020.jpg"
     },
     {
       "item_id": 17,
-      "product_code": "2025-03-004",
+      "product_code": "2026-03-004",
       "item_name": "Accounting Workbook",
       "category": "Books",
       "found_location": "Classroom 102",
       "description": "Fundamentals of Accounting workbook with completed exercises up to Chapter 5. Has the owner's name lightly erased on the cover. Blue spine.",
       "status": "Claimed",
-      "date_found": "2025-03-02",
-      "image": "assets/images/2025-03-004.jpg"
+      "date_found": "2026-03-02",
+      "image": "assets/images/2026-03-004.jpg"
     },
     {
       "item_id": 18,
-      "product_code": "2025-03-021",
+      "product_code": "2026-03-021",
       "item_name": "Leather Wallet (Brown)",
       "category": "Personal Items",
       "found_location": "Canteen",
       "description": "Brown leather bifold wallet. Contains some receipts and a few coins inside but no cash or IDs. Found on a bench near the food stalls.",
       "status": "Unclaimed",
-      "date_found": "2025-03-10",
-      "image": "assets/images/2025-03-021.jpg"
+      "date_found": "2026-03-10",
+      "image": "assets/images/2026-03-021.jpg"
     },
     {
       "item_id": 19,
-      "product_code": "2025-03-022",
+      "product_code": "2026-03-022",
       "item_name": "Bundle of Art Materials",
       "category": "School Supplies",
       "found_location": "Building C - Room 301",
       "description": "Plastic folder containing watercolor paints, brushes, and sketching pencils. Likely belongs to a Fine Arts student. Folder is clear with blue borders.",
       "status": "Unclaimed",
-      "date_found": "2025-03-10",
-      "image": "assets/images/2025-03-022.jpg"
+      "date_found": "2026-03-10",
+      "image": "assets/images/2026-03-022.jpg"
     },
     {
       "item_id": 20,
-      "product_code": "2025-03-024",
+      "product_code": "2026-03-024",
       "item_name": "Basketball",
       "category": "Sports Equipment",
       "found_location": "Gymnasium",
       "description": "Molten indoor basketball, slightly deflated. Has a signature and number '7' written in black marker. Left in the gymnasium storage hallway.",
       "status": "Unclaimed",
-      "date_found": "2025-03-11",
-      "image": "assets/images/2025-03-024.jpg"
+      "date_found": "2026-03-11",
+      "image": "assets/images/2026-03-024.jpg"
     },
     {
       "item_id": 21,
-      "product_code": "2025-03-025",
+      "product_code": "2026-03-025",
       "item_name": "Laptop Mouse (Wireless)",
       "category": "Electronics",
       "found_location": "Library - 2nd Floor",
       "description": "Logitech M185 wireless mouse in gray. USB receiver still attached to the bottom. Found on a study table near the computer terminals.",
       "status": "Unclaimed",
-      "date_found": "2025-03-11",
-      "image": "assets/images/2025-03-025.jpg"
+      "date_found": "2026-03-11",
+      "image": "assets/images/2026-03-025.jpg"
     },
     {
       "item_id": 22,
-      "product_code": "2025-03-006",
+      "product_code": "2026-03-006",
       "item_name": "Stainless Steel Water Bottle",
       "category": "Accessories",
       "found_location": "Canteen",
       "description": "Hydro Flask-style insulated water bottle in forest green with a black lid. Has a few stickers on the body. Kept ice-cold when found.",
       "status": "Claimed",
-      "date_found": "2025-03-03",
-      "image": "assets/images/2025-03-006.jpg"
+      "date_found": "2026-03-03",
+      "image": "assets/images/2026-03-006.jpg"
     },
     {
       "item_id": 23,
-      "product_code": "2025-03-026",
+      "product_code": "2026-03-026",
       "item_name": "PhilHealth Card",
       "category": "IDs/Cards",
       "found_location": "Hallway - Building B",
       "description": "PhilHealth insurance card found on the hallway floor between rooms 210 and 212. Name is visible on the card. Still valid.",
       "status": "Unclaimed",
-      "date_found": "2025-03-12",
-      "image": "assets/images/2025-03-026.jpg"
+      "date_found": "2026-03-12",
+      "image": "assets/images/2026-03-026.jpg"
     },
     {
       "item_id": 24,
-      "product_code": "2025-03-027",
+      "product_code": "2026-03-027",
       "item_name": "Physics Reference Book",
       "category": "Books",
       "found_location": "Library - 3rd Floor",
       "description": "University Physics by Young and Freedman, 14th edition. Heavy hardbound book. No annotations. Found on the reserved shelf area by accident.",
       "status": "Unclaimed",
-      "date_found": "2025-03-12",
-      "image": "assets/images/2025-03-027.jpg"
+      "date_found": "2026-03-12",
+      "image": "assets/images/2026-03-027.jpg"
     },
     {
       "item_id": 25,
-      "product_code": "2025-03-028",
+      "product_code": "2026-03-028",
       "item_name": "MMCM Organization Polo",
       "category": "Clothing",
       "found_location": "Canteen - 2nd Floor",
       "description": "MMCM student organization polo shirt in white with blue embroidery. Size Small. Left on the back of a chair. Has the org name stitched on chest.",
       "status": "Unclaimed",
-      "date_found": "2025-03-13",
-      "image": "assets/images/2025-03-028.jpg"
+      "date_found": "2026-03-13",
+      "image": "assets/images/2026-03-028.jpg"
     },
     {
       "item_id": 26,
-      "product_code": "2025-03-029",
+      "product_code": "2026-03-029",
       "item_name": "USB Flash Drive (32GB)",
       "category": "Electronics",
       "found_location": "Computer Laboratory",
       "description": "Kingston 32GB flash drive in blue. Found plugged into one of the lab computers after a class session. Contains academic files.",
       "status": "Unclaimed",
-      "date_found": "2025-03-13",
-      "image": "assets/images/2025-03-029.jpg"
+      "date_found": "2026-03-13",
+      "image": "assets/images/2026-03-029.jpg"
     },
     {
       "item_id": 27,
-      "product_code": "2025-03-010",
+      "product_code": "2026-03-010",
       "item_name": "Pink Lunch Bag",
       "category": "Bags",
       "found_location": "Canteen",
       "description": "Small pink insulated lunch bag with a zipper. Contains an empty container and chopsticks inside. Left on a table near the window.",
       "status": "Claimed",
-      "date_found": "2025-03-05",
-      "image": "assets/images/2025-03-010.jpg"
+      "date_found": "2026-03-05",
+      "image": "assets/images/2026-03-010.jpg"
     },
     {
       "item_id": 28,
-      "product_code": "2025-03-030",
+      "product_code": "2026-03-030",
       "item_name": "Umbrella (Folding)",
       "category": "Personal Items",
       "found_location": "Building A - Entrance",
       "description": "Compact folding umbrella in navy blue with automatic open/close function. Found leaning against the wall near the main entrance.",
       "status": "Unclaimed",
-      "date_found": "2025-03-14",
-      "image": "assets/images/2025-03-030.jpg"
+      "date_found": "2026-03-14",
+      "image": "assets/images/2026-03-030.jpg"
     },
     {
       "item_id": 29,
-      "product_code": "2025-03-031",
+      "product_code": "2026-03-031",
       "item_name": "Set of Highlighters",
       "category": "School Supplies",
       "found_location": "Classroom 306",
       "description": "Pack of 6 Stabilo Boss highlighters in various colors. One is almost empty. Found inside a desk in Room 306 after morning classes.",
       "status": "Unclaimed",
-      "date_found": "2025-03-14",
-      "image": "assets/images/2025-03-031.jpg"
+      "date_found": "2026-03-14",
+      "image": "assets/images/2026-03-031.jpg"
     },
     {
       "item_id": 30,
-      "product_code": "2025-03-032",
+      "product_code": "2026-03-032",
       "item_name": "Earphones (Wired)",
       "category": "Accessories",
       "found_location": "Library - 1st Floor",
       "description": "Sony wired earphones with 3.5mm jack. Black with red accents. Wrapped neatly and left on a chair near the periodical section.",
       "status": "Unclaimed",
-      "date_found": "2025-03-15",
-      "image": "assets/images/2025-03-032.jpg"
+      "date_found": "2026-03-15",
+      "image": "assets/images/2026-03-032.jpg"
     },
     {
       "item_id": 31,
-      "product_code": "2025-03-033",
+      "product_code": "2026-03-033",
       "item_name": "Xiaomi Smartwatch",
       "category": "Electronics",
       "found_location": "Gymnasium - Bleachers",
       "description": "Xiaomi Mi Band 7 fitness tracker in black. Heart rate monitor still functional. Found on the bleachers after an intramural event.",
       "status": "Unclaimed",
-      "date_found": "2025-03-15",
-      "image": "assets/images/2025-03-033.jpg"
+      "date_found": "2026-03-15",
+      "image": "assets/images/2026-03-033.jpg"
     },
     {
       "item_id": 32,
-      "product_code": "2025-03-012",
+      "product_code": "2026-03-012",
       "item_name": "Literature Anthology",
       "category": "Books",
       "found_location": "Classroom 205",
       "description": "Philippine Literature anthology, softbound. Has a red bookmark still inserted around page 87. Name written on the first page is partially torn.",
       "status": "Claimed",
-      "date_found": "2025-03-06",
-      "image": "assets/images/2025-03-012.jpg"
+      "date_found": "2026-03-06",
+      "image": "assets/images/2026-03-012.jpg"
     },
     {
       "item_id": 33,
-      "product_code": "2025-03-034",
+      "product_code": "2026-03-034",
       "item_name": "Sports Shorts (Gray)",
       "category": "Clothing",
       "found_location": "Gymnasium - Locker Room",
       "description": "Gray athletic shorts, size medium. Found on the bench in the male locker room. No visible name tag. Nike brand with small logo on left leg.",
       "status": "Unclaimed",
-      "date_found": "2025-03-15",
-      "image": "assets/images/2025-03-034.jpg"
+      "date_found": "2026-03-15",
+      "image": "assets/images/2026-03-034.jpg"
     },
     {
       "item_id": 34,
-      "product_code": "2025-03-015",
+      "product_code": "2026-03-015",
       "item_name": "Driver's License",
       "category": "IDs/Cards",
       "found_location": "Parking Lot",
       "description": "LTO Driver's license found near the motorcycle parking area. Full name visible. Submitted to the security office and recorded here for reference.",
       "status": "Claimed",
-      "date_found": "2025-03-07",
-      "image": "assets/images/2025-03-015.jpg"
+      "date_found": "2026-03-07",
+      "image": "assets/images/2026-03-015.jpg"
     },
     {
       "item_id": 35,
-      "product_code": "2025-03-035",
+      "product_code": "2026-03-035",
       "item_name": "Laptop Bag (Sleeve)",
       "category": "Bags",
       "found_location": "Library - 3rd Floor",
       "description": "13-inch neoprene laptop sleeve in dark gray. No laptop inside\u2014just the sleeve. Has a small accessory pocket with charging cables still in it.",
       "status": "Unclaimed",
-      "date_found": "2025-03-16",
-      "image": "assets/images/2025-03-035.jpg"
+      "date_found": "2026-03-16",
+      "image": "assets/images/2026-03-035.jpg"
     },
     {
       "item_id": 36,
-      "product_code": "2025-03-036",
+      "product_code": "2026-03-036",
       "item_name": "Rosary and Bracelet",
       "category": "Personal Items",
       "found_location": "Chapel",
       "description": "Wooden bead rosary and a matching brown bracelet. Found on a pew in the campus chapel. Appears to have sentimental value.",
       "status": "Unclaimed",
-      "date_found": "2025-03-16",
-      "image": "assets/images/2025-03-036.jpg"
+      "date_found": "2026-03-16",
+      "image": "assets/images/2026-03-036.jpg"
     },
     {
       "item_id": 37,
-      "product_code": "2025-03-037",
+      "product_code": "2026-03-037",
       "item_name": "Bluetooth Speaker (Mini)",
       "category": "Electronics",
       "found_location": "Canteen - 2nd Floor",
       "description": "JBL Clip 4 mini speaker in yellow. Still has battery charge. Found on top of the refrigerator near the drinks section of the canteen.",
       "status": "Unclaimed",
-      "date_found": "2025-03-17",
-      "image": "assets/images/2025-03-037.jpg"
+      "date_found": "2026-03-17",
+      "image": "assets/images/2026-03-037.jpg"
     },
     {
       "item_id": 38,
-      "product_code": "2025-03-038",
+      "product_code": "2026-03-038",
       "item_name": "Notebook Bundle (3 pcs)",
       "category": "School Supplies",
       "found_location": "Classroom 402",
       "description": "Three college-ruled notebooks bound with a rubber band. Two are used and one is new. Found stacked under a chair in Room 402.",
       "status": "Unclaimed",
-      "date_found": "2025-03-17",
-      "image": "assets/images/2025-03-038.jpg"
+      "date_found": "2026-03-17",
+      "image": "assets/images/2026-03-038.jpg"
     },
     {
       "item_id": 39,
-      "product_code": "2025-03-018",
+      "product_code": "2026-03-018",
       "item_name": "Sunglasses",
       "category": "Accessories",
       "found_location": "Building A - Lobby",
       "description": "Tortoise shell patterned sunglasses with UV protection lenses. No case. Found on the lobby bench near the bulletin board.",
       "status": "Claimed",
-      "date_found": "2025-03-08",
-      "image": "assets/images/2025-03-018.jpg"
+      "date_found": "2026-03-08",
+      "image": "assets/images/2026-03-018.jpg"
     },
     {
       "item_id": 40,
-      "product_code": "2025-03-039",
+      "product_code": "2026-03-039",
       "item_name": "Badminton Racket",
       "category": "Sports Equipment",
       "found_location": "Gymnasium - Equipment Room",
       "description": "Yonex badminton racket with a maroon grip tape. String tension still good. Left leaning against the equipment room door after a PE class.",
       "status": "Unclaimed",
-      "date_found": "2025-03-18",
-      "image": "assets/images/2025-03-039.jpg"
+      "date_found": "2026-03-18",
+      "image": "assets/images/2026-03-039.jpg"
     },
     {
       "item_id": 41,
-      "product_code": "2025-03-040",
+      "product_code": "2026-03-040",
       "item_name": "Laptop Charger (Asus)",
       "category": "Electronics",
       "found_location": "Computer Laboratory",
       "description": "Asus 65W laptop charger with the proprietary round pin connector. Cord is slightly frayed near the brick. Found left in a lab cubicle.",
       "status": "Unclaimed",
-      "date_found": "2025-03-18",
-      "image": "assets/images/2025-03-040.jpg"
+      "date_found": "2026-03-18",
+      "image": "assets/images/2026-03-040.jpg"
     },
     {
       "item_id": 42,
-      "product_code": "2025-03-041",
+      "product_code": "2026-03-041",
       "item_name": "Business Law Textbook",
       "category": "Books",
       "found_location": "Classroom 301",
       "description": "Business Law and Regulation in the Philippines, 2nd edition. Hardbound. Has yellow and pink highlights on several chapters. Found on a lecture table.",
       "status": "Unclaimed",
-      "date_found": "2025-03-19",
-      "image": "assets/images/2025-03-041.jpg"
+      "date_found": "2026-03-19",
+      "image": "assets/images/2026-03-041.jpg"
     },
     {
       "item_id": 43,
-      "product_code": "2025-03-042",
+      "product_code": "2026-03-042",
       "item_name": "Maroon Varsity Jacket",
       "category": "Clothing",
       "found_location": "Canteen - Ground Floor",
       "description": "MMCM varsity-style jacket in maroon with white accents. Has number '11' on the back. Left hanging on a chair during lunch. Size Medium.",
       "status": "Unclaimed",
-      "date_found": "2025-03-19",
-      "image": "assets/images/2025-03-042.jpg"
+      "date_found": "2026-03-19",
+      "image": "assets/images/2026-03-042.jpg"
     },
     {
       "item_id": 44,
-      "product_code": "2025-03-023",
+      "product_code": "2026-03-023",
       "item_name": "Hand Sanitizer + Pouch",
       "category": "Personal Items",
       "found_location": "Restroom - Building A",
       "description": "Small toiletry pouch containing a 50ml hand sanitizer, lip balm, and a pocket mirror. Found on the counter of the ladies' restroom.",
       "status": "Claimed",
-      "date_found": "2025-03-10",
-      "image": "assets/images/2025-03-023.jpg"
+      "date_found": "2026-03-10",
+      "image": "assets/images/2026-03-023.jpg"
     },
     {
       "item_id": 45,
-      "product_code": "2025-03-043",
+      "product_code": "2026-03-043",
       "item_name": "SSS Card",
       "category": "IDs/Cards",
       "found_location": "Hallway - Building C",
       "description": "SSS unified multi-purpose ID card found on the floor of the 3rd floor hallway in Building C. Name clearly readable. Submitted to registrar.",
       "status": "Unclaimed",
-      "date_found": "2025-03-20",
-      "image": "assets/images/2025-03-043.jpg"
+      "date_found": "2026-03-20",
+      "image": "assets/images/2026-03-043.jpg"
     },
     {
       "item_id": 46,
-      "product_code": "2025-03-044",
+      "product_code": "2026-03-044",
       "item_name": "Transparent Tote Bag",
       "category": "Bags",
       "found_location": "Library - 1st Floor",
       "description": "Clear PVC tote bag with visible contents: a coin purse and a small notebook. Found near the library entrance lockers.",
       "status": "Unclaimed",
-      "date_found": "2025-03-20",
-      "image": "assets/images/2025-03-044.jpg"
+      "date_found": "2026-03-20",
+      "image": "assets/images/2026-03-044.jpg"
     },
     {
       "item_id": 47,
-      "product_code": "2025-03-045",
+      "product_code": "2026-03-045",
       "item_name": "Jump Rope",
       "category": "Sports Equipment",
       "found_location": "Gymnasium",
       "description": "Speed jump rope with weighted handles in red and black. Adjustable length. Found rolled up and left on the gym floor near the stage area.",
       "status": "Unclaimed",
-      "date_found": "2025-03-20",
-      "image": "assets/images/2025-03-045.jpg"
+      "date_found": "2026-03-20",
+      "image": "assets/images/2026-03-045.jpg"
     },
     {
       "item_id": 48,
-      "product_code": "2025-03-046",
+      "product_code": "2026-03-046",
       "item_name": "Digital Voice Recorder",
       "category": "Electronics",
       "found_location": "Classroom 210",
       "description": "Sony ICD-PX470 digital voice recorder in silver. Found on a desk after a 7AM class. Memory card still inside. Has recordings on it.",
       "status": "Unclaimed",
-      "date_found": "2025-03-21",
-      "image": "assets/images/2025-03-046.jpg"
+      "date_found": "2026-03-21",
+      "image": "assets/images/2026-03-046.jpg"
     },
     {
       "item_id": 49,
-      "product_code": "2025-03-047",
+      "product_code": "2026-03-047",
       "item_name": "Technical Drawing Tools",
       "category": "School Supplies",
       "found_location": "Classroom 305",
       "description": "Engineering drawing kit: T-square, drafting compass, and rolled blueprint paper inside a cardboard tube. Likely belongs to a civil engineering student.",
       "status": "Unclaimed",
-      "date_found": "2025-03-21",
-      "image": "assets/images/2025-03-047.jpg"
+      "date_found": "2026-03-21",
+      "image": "assets/images/2026-03-047.jpg"
     },
     {
       "item_id": 50,
-      "product_code": "2025-03-048",
+      "product_code": "2026-03-048",
       "item_name": "Lanyard with Keys",
       "category": "Accessories",
       "found_location": "Parking Lot",
       "description": "MMCM-branded lanyard with two keys attached \u2014 appears to be house keys with a small rubber duck key chain. Found near the bicycle rack.",
       "status": "Unclaimed",
-      "date_found": "2025-03-22",
-      "image": "assets/images/2025-03-048.jpg"
+      "date_found": "2026-03-22",
+      "image": "assets/images/2026-03-048.jpg"
     }
   ]
 }

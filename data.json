@@ -31,7 +31,10 @@
       "description": "Student ID belonging to a 3rd year student. Found on the floor near the stairwell. Card is still in good condition.",
       "status": "Claimed",
       "date_found": "2026-02-28",
-      "image": "assets/images/2026-02-002.jpg"
+      "image": "assets/images/2026-02-002.jpg",
+      "claimer_name": "Francis Bautista",
+      "claimer_id": "2023379322",
+      "date_claimed": "2026-03-02"
     },
     {
       "item_id": 4,
@@ -86,7 +89,10 @@
       "description": "White USB-C phone charger with a 1-meter cable. Anker brand. Plug adapter still attached. Found plugged into the wall outlet.",
       "status": "Claimed",
       "date_found": "2026-02-25",
-      "image": "assets/images/2026-02-001.jpg"
+      "image": "assets/images/2026-02-001.jpg",
+      "claimer_name": "Francis Bautista",
+      "claimer_id": "2025491071",
+      "date_claimed": "2026-02-28"
     },
     {
       "item_id": 9,
@@ -141,7 +147,10 @@
       "description": "BDO Savings Account ATM debit card. Found near the cashier counter. Card is still valid as per the expiry date visible on front.",
       "status": "Claimed",
       "date_found": "2026-03-01",
-      "image": "assets/images/2026-03-002.jpg"
+      "image": "assets/images/2026-03-002.jpg",
+      "claimer_name": "Kevin Santos",
+      "claimer_id": "2025469944",
+      "date_claimed": "2026-03-08"
     },
     {
       "item_id": 14,
@@ -185,7 +194,10 @@
       "description": "Fundamentals of Accounting workbook with completed exercises up to Chapter 5. Has the owner's name lightly erased on the cover. Blue spine.",
       "status": "Claimed",
       "date_found": "2026-03-02",
-      "image": "assets/images/2026-03-004.jpg"
+      "image": "assets/images/2026-03-004.jpg",
+      "claimer_name": "Camille Ocampo",
+      "claimer_id": "2022194872",
+      "date_claimed": "2026-03-03"
     },
     {
       "item_id": 18,
@@ -240,7 +252,10 @@
       "description": "Hydro Flask-style insulated water bottle in forest green with a black lid. Has a few stickers on the body. Kept ice-cold when found.",
       "status": "Claimed",
       "date_found": "2026-03-03",
-      "image": "assets/images/2026-03-006.jpg"
+      "image": "assets/images/2026-03-006.jpg",
+      "claimer_name": "Carlo Santos",
+      "claimer_id": "2023322790",
+      "date_claimed": "2026-03-07"
     },
     {
       "item_id": 23,
@@ -295,7 +310,10 @@
       "description": "Small pink insulated lunch bag with a zipper. Contains an empty container and chopsticks inside. Left on a table near the window.",
       "status": "Claimed",
       "date_found": "2026-03-05",
-      "image": "assets/images/2026-03-010.jpg"
+      "image": "assets/images/2026-03-010.jpg",
+      "claimer_name": "Ramon Dionisio",
+      "claimer_id": "2023602855",
+      "date_claimed": "2026-03-12"
     },
     {
       "item_id": 28,
@@ -350,7 +368,10 @@
       "description": "Philippine Literature anthology, softbound. Has a red bookmark still inserted around page 87. Name written on the first page is partially torn.",
       "status": "Claimed",
       "date_found": "2026-03-06",
-      "image": "assets/images/2026-03-012.jpg"
+      "image": "assets/images/2026-03-012.jpg",
+      "claimer_name": "Rochelle Garcia",
+      "claimer_id": "2024917210",
+      "date_claimed": "2026-03-09"
     },
     {
       "item_id": 33,
@@ -372,7 +393,10 @@
       "description": "LTO Driver's license found near the motorcycle parking area. Full name visible. Submitted to the security office and recorded here for reference.",
       "status": "Claimed",
       "date_found": "2026-03-07",
-      "image": "assets/images/2026-03-015.jpg"
+      "image": "assets/images/2026-03-015.jpg",
+      "claimer_name": "Aldwin Mercado",
+      "claimer_id": "2024390881",
+      "date_claimed": "2026-03-14"
     },
     {
       "item_id": 35,
@@ -427,7 +451,10 @@
       "description": "Tortoise shell patterned sunglasses with UV protection lenses. No case. Found on the lobby bench near the bulletin board.",
       "status": "Claimed",
       "date_found": "2026-03-08",
-      "image": "assets/images/2026-03-018.jpg"
+      "image": "assets/images/2026-03-018.jpg",
+      "claimer_name": "Eduardo Reyes",
+      "claimer_id": "2024463416",
+      "date_claimed": "2026-03-14"
     },
     {
       "item_id": 40,
@@ -482,7 +509,10 @@
       "description": "Small toiletry pouch containing a 50ml hand sanitizer, lip balm, and a pocket mirror. Found on the counter of the ladies' restroom.",
       "status": "Claimed",
       "date_found": "2026-03-10",
-      "image": "assets/images/2026-03-023.jpg"
+      "image": "assets/images/2026-03-023.jpg",
+      "claimer_name": "Eduardo Aquino",
+      "claimer_id": "2023629223",
+      "date_claimed": "2026-03-17"
     },
     {
       "item_id": 45,
@@ -549,6 +579,81 @@
       "status": "Unclaimed",
       "date_found": "2026-03-22",
       "image": "assets/images/2026-03-048.jpg"
+    }
+  ],
+  "archived": [
+    {
+      "item_id": 901,
+      "archive_id": 1700000001,
+      "product_code": "2026-01-011",
+      "item_name": "Broken Umbrella",
+      "category": "Personal Items",
+      "found_location": "Building A - Entrance",
+      "description": "Compact folding umbrella found at the entrance. Frame is visibly bent and the canopy is torn \u2014 no longer functional.",
+      "status": "Unclaimed",
+      "date_found": "2026-01-15",
+      "image": "assets/default/DEF.png",
+      "reason_for_archive": "Item is damaged beyond use. Disposed of after 30-day holding period.",
+      "archived_at": "2026-02-15"
+    },
+    {
+      "item_id": 902,
+      "archive_id": 1700000002,
+      "product_code": "2026-01-022",
+      "item_name": "Nokia Keypad Phone",
+      "category": "Electronics",
+      "found_location": "Canteen - Ground Floor",
+      "description": "Old Nokia bar-type keypad phone found on a canteen bench. Battery non-removable and unresponsive. No SIM inside.",
+      "status": "Unclaimed",
+      "date_found": "2026-01-22",
+      "image": "assets/default/DEF.png",
+      "reason_for_archive": "Unclaimed for over 60 days. Turned over to security office for proper disposal.",
+      "archived_at": "2026-03-22"
+    },
+    {
+      "item_id": 903,
+      "archive_id": 1700000003,
+      "product_code": "2026-02-008",
+      "item_name": "MMCM ID (Graduated Student)",
+      "category": "IDs/Cards",
+      "found_location": "Registrar Office - Bulletin Board",
+      "description": "Student ID found pinned to the hallway bulletin board. Belongs to a student from batch 2024 who has already graduated.",
+      "status": "Claimed",
+      "date_found": "2026-02-10",
+      "image": "assets/images/2026-02-002.jpg",
+      "claimer_name": "Maricel Torres",
+      "claimer_id": "2021847293",
+      "date_claimed": "2026-02-18",
+      "reason_for_archive": "Item claimed and returned to owner. Archived for record-keeping.",
+      "archived_at": "2026-02-20"
+    },
+    {
+      "item_id": 904,
+      "archive_id": 1700000004,
+      "product_code": "2026-02-019",
+      "item_name": "Wet Notebook (Water-damaged)",
+      "category": "Books",
+      "found_location": "Library - 1st Floor",
+      "description": "A college-ruled notebook found soaking wet near the library entrance after heavy rain. Pages stuck together and mold starting to form.",
+      "status": "Unclaimed",
+      "date_found": "2026-02-19",
+      "image": "assets/default/DEF.png",
+      "reason_for_archive": "Item destroyed due to water damage and mold. Health and safety concern.",
+      "archived_at": "2026-02-21"
+    },
+    {
+      "item_id": 905,
+      "archive_id": 1700000005,
+      "product_code": "2026-03-049",
+      "item_name": "Cracked Casio Calculator",
+      "category": "Electronics",
+      "found_location": "Classroom 310",
+      "description": "Casio FX-82 scientific calculator with a heavily cracked screen. Display is no longer readable. Found under a desk after class.",
+      "status": "Unclaimed",
+      "date_found": "2026-03-01",
+      "image": "assets/default/DEF.png",
+      "reason_for_archive": "Item is non-functional due to physical damage. Disposed after 14-day holding.",
+      "archived_at": "2026-03-15"
     }
   ]
 }

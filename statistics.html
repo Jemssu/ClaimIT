@@ -197,7 +197,9 @@
                                     <th>Category</th>
                                     <th>Location Found</th>
                                     <th>Date Found</th>
+                                    <th>Date Claimed</th>
                                     <th>Claimed By</th>
+                                    <th>Student ID</th>
                                 </tr>
                             </thead>
                             <tbody id="claimedTableBody"></tbody>
@@ -355,9 +357,11 @@
                 <td>${esc(i.category)}</td>
                 <td>${esc(i.found_location)}</td>
                 <td>${fmtDate(i.date_found)}</td>
-                <td>${i.claimer_name ? esc(i.claimer_name) + ' (' + esc(i.claimer_id||'—') + ')' : '<em style="color:#aaa">—</em>'}</td>
+                <td>${i.date_claimed ? fmtDate(i.date_claimed) : '<em style="color:#aaa">—</em>'}</td>
+                <td>${i.claimer_name ? esc(i.claimer_name) : '<em style="color:#aaa">—</em>'}</td>
+                <td>${i.claimer_id ? `<span style="font-family:monospace;font-weight:700;font-size:12px;color:#003d7a;">${esc(i.claimer_id)}</span>` : '<em style="color:#aaa">—</em>'}</td>
             </tr>`).join('')
-            : `<tr><td colspan="6" style="text-align:center;color:#aaa;padding:30px;">No claimed items found.</td></tr>`;
+            : `<tr><td colspan="8" style="text-align:center;color:#aaa;padding:30px;">No claimed items found.</td></tr>`;
     }
 
     function clearClaimedFilters() {
@@ -382,4 +386,4 @@
     init();
     </script>
 </body>
-</html>
+</html> 

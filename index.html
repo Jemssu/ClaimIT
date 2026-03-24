@@ -290,8 +290,10 @@
         .modal-foot {
             padding: 12px 22px; border-top: 1px solid #eee; background: #f8f9fa;
             font-size: 12px; color: #999; font-style: italic; flex-shrink: 0;
+            display: flex; align-items: center; gap: 7px;
         }
-        .modal-foot.claimed { background: #f0fdf4; border-top-color: #bbf7d0; color: #1a7f37; font-style: normal; font-weight: 600; }
+        .modal-foot.unclaimed { background: #fff0f0; border-top-color: #ffd0d2; color: #d9242e; font-style: normal; font-weight: 600; }
+        .modal-foot.claimed   { background: #f0fdf4; border-top-color: #bbf7d0; color: #1a7f37; font-style: normal; font-weight: 600; }
 
         /* ── LOADING ── */
         .loading-screen {
@@ -421,9 +423,7 @@
                 <div class="modal-img" id="modalImg"></div>
                 <div class="modal-info" id="modalInfo"></div>
             </div>
-            <div class="modal-foot" id="modalFoot">
-                Visit the Lost &amp; Found Office to claim this item. Bring your Student ID.
-            </div>
+            <div class="modal-foot" id="modalFoot"></div>
         </div>
     </div>
 
@@ -580,7 +580,10 @@
         const sc = claimed ? 'claimed' : 'unclaimed';
         document.getElementById('modalBox').className  = 'modal-box'  + (claimed ? ' claimed' : '');
         document.getElementById('modalHead').className = 'modal-head' + (claimed ? ' claimed' : '');
-        document.getElementById('modalFoot').className = 'modal-foot' + (claimed ? ' claimed' : '');
+        document.getElementById('modalFoot').className = 'modal-foot' + (claimed ? ' claimed' : ' unclaimed');
+        document.getElementById('modalFoot').innerHTML = claimed
+            ? `<i class='bx bx-check-circle'></i> This item has already been claimed.`
+            : `<i class='bx bx-id-card'></i> Visit the Lost &amp; Found Office to claim this item. Bring your Student ID.`;
         document.getElementById('modalTitle').textContent = item.item_name;
         document.getElementById('modalTags').innerHTML = `
             <span class="m-code ${sc}">${esc(item.product_code)}</span>

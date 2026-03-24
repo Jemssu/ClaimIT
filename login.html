@@ -292,6 +292,37 @@
             background-color: #fff5f5 !important;
         }
 
+        /* PASSWORD SHOW/HIDE TOGGLE */
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-wrapper input {
+            width: 100%;
+            padding-right: 46px !important;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 14px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            transition: color 0.2s ease;
+            line-height: 1;
+        }
+
+        .toggle-password:hover {
+            color: #d9242e;
+        }
+
         /* MOBILE-SPECIFIC STYLES */
         @media (max-width: 768px) {
             .login-page-container {
@@ -353,6 +384,10 @@
                 padding: 14px 18px !important;
                 border: 1px solid #e2e8f0 !important;
                 background: #f8fafc !important;
+            }
+
+            .password-wrapper input {
+                padding-right: 46px !important;
             }
 
             .login-submit {
@@ -474,7 +509,12 @@
                 </div>
                 <div class="form-group">
                     <label for="pass">Password</label>
-                    <input type="password" id="pass" name="pass" placeholder="Enter your password" required autocomplete="current-password">
+                    <div class="password-wrapper">
+                        <input type="password" id="pass" name="pass" placeholder="Enter your password" required autocomplete="current-password">
+                        <button type="button" class="toggle-password" id="togglePass" aria-label="Show/hide password" tabindex="-1">
+                            <i class="bx bx-hide" id="togglePassIcon"></i>
+                        </button>
+                    </div>
                 </div>
                 <button type="submit" class="login-submit" id="submitBtn">
                     <i class="bx bx-log-in"></i> Enter Dashboard
@@ -629,6 +669,15 @@
                 submitBtn.style.opacity = '1';
             }
         }
+        // ===== SHOW / HIDE PASSWORD =====
+        const togglePass = document.getElementById('togglePass');
+        const togglePassIcon = document.getElementById('togglePassIcon');
+
+        togglePass.addEventListener('click', function () {
+            const isHidden = passwordInput.type === 'password';
+            passwordInput.type = isHidden ? 'text' : 'password';
+            togglePassIcon.className = isHidden ? 'bx bx-show' : 'bx bx-hide';
+        });
     </script>
 </body>
 </html>
